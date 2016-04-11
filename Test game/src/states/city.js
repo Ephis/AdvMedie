@@ -32,20 +32,21 @@ city.prototype = {
         //Load npcs
         
         //Physics
-        this.game.physics.startSystem(Phaser.Physics.P2JS);
+        this.game.physics.startSystem(Phaser.Physics.ARCADE);
         //Setting up witch tiles needs colliders
         map.setCollision(42, true, "Collisions");
         //Physics engine create collision bodies from the tiles
-        this.game.physics.p2.convertTilemap(map, "Collisions");
-        this.game.physics.p2.enable(player.sprite, true);
+        this.game.physics.enable(player.sprite);
         
         //Setup the map
         this.game.world.setBounds(0, 0, 3200, 3200);
         
         //Setup the player
-        player.sprite.body.data.gravityScale = 0;
+        player.sprite.body.velocity.set(0,0);
         player.sprite.body.colliderWorldBounds = true;
-        //player.sprite.body.bounce.set(1);
+        player.sprite.anchor.set(0.5);
+        player.sprite.body.bounce.set(1);
+        player.sprite.body.collideWorldBounds = true;
         
         //Camera
         this.game.camera.follow(player.sprite);
