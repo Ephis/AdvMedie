@@ -37,13 +37,13 @@ city.prototype = {
         map.setCollision(42, true, "Collisions");
         //Physics engine create collision bodies from the tiles
         this.game.physics.p2.convertTilemap(map, "Collisions");
-        this.game.physics.p2.enable(player.sprite);
+        this.game.physics.p2.enable(player.sprite, true);
         
         //Setup the map
         this.game.world.setBounds(0, 0, 3200, 3200);
         
         //Setup the player
-        //player.sprite.body.velocity.set(0, 0);
+        player.sprite.body.data.gravityScale = 0;
         player.sprite.body.colliderWorldBounds = true;
         //player.sprite.body.bounce.set(1);
         
