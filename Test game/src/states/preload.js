@@ -1,0 +1,41 @@
+var preload = function (game) {
+    this.game = game;
+};
+
+preload.prototype = {
+    preload: function() {
+        console.log("Preload state")
+        //Setting up the game canvas
+        this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        this.game.scale.pageAlignHorizontally = true;
+        this.game.scale.pageAlignVertically = true;
+        this.game.stage.backgroundColor = '#eee';
+    
+        //Load all needed assets
+            //Loading everything for the menu
+                //Loading images
+        this.load.image('MenuBackground', 'assets/menu-background.jpg');
+        this.load.image('MenuStartButton', 'assets/Menu_Red_03.png');
+        this.load.image('MenuContinueButton', 'assets/Menu_Red_01.png');
+        this.load.image('MenuPauseButton', 'assets/Menu_Red_04.png');
+        this.load.image('MenuQuitButton', 'assets/Menu_Red_02.png');
+                //Loading sounds
+        this.load.audio('StartGameSound', 'assets/sounds/menu/start_game_sound.wav');
+        this.load.audio('MouseOver', 'assets/sounds/menu/mouse_over_item.wav');
+        
+            //Loading everything for the city
+        this.game.load.tilemap('Map', 'assets/map/map.json', null, Phaser.Tilemap.TILED_JSON);
+        this.game.load.image('TilesetBG', 'assets/map/mapBg.png');
+        this.game.load.image('TilesetObstacles', 'assets/map/obstacles.png');
+            //Loading everything for the dialogs
+        
+            //Loading everything for the fights
+    
+        //Check if any savedGames
+    
+    
+    },
+    create: function() {
+        this.state.start('Menu');
+    }
+};
