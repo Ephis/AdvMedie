@@ -29,11 +29,9 @@ preload.prototype = {
         this.load.image('player-right', 'assets/player/right-view-char.png');
         this.load.image('player-left', 'assets/player/left-view-char.png');
         
-        
             //Loading everything for the city
         this.game.load.tilemap('Map', 'assets/map/map.json', null, Phaser.Tilemap.TILED_JSON);
-        this.game.load.image('TilesetBG', 'assets/map/mapBg.png');
-        this.game.load.image('TilesetObstacles', 'assets/map/obstacles.png');
+        this.game.load.image('Tileset', 'assets/map/RPGpack_sheet.png');
             //Loading everything for the dialogs
         
             //Loading everything for the fights

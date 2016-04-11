@@ -4,8 +4,7 @@ var city = function(game) {
 
 var map;
 var background;
-var backgroundOL;
-var foreground;
+var road;
 var player;
 
 var movementspeed;
@@ -18,12 +17,19 @@ city.prototype = {
         console.log('City state')
         //Load map
         map = this.game.add.tilemap('Map');
-        map.addTilesetImage('RPGpack_sheet', 'TilesetBG');
-        background = map.createLayer('Tile Layer 1');
-        backgroundOL = map.createLayer('BackgroundOverlay');
-        foreground = map.createLayer('Foreground');
+        map.addTilesetImage('RPGpack_sheet', 'Tileset');
+        background = map.createLayer('Grass');
+        road = map.createLayer('Road');
+        map.createLayer('Fence');
+        map.createLayer('Trees');
+        map.createLayer('HouseWalls');
+        map.createLayer('HouseRoof');
+        map.createLayer('HouseDoor');
+        map.createLayer('HouseWindow');
+        map.createLayer('Bushes');
+        //foreground = map.createLayer('Foreground');
         //background.resizeWorld();
-        //Load "waypoints"
+         //Load "waypoints"
         
         //Load player
         playerSprite = this.game.add.sprite(50, 50, 'player-front');
@@ -47,6 +53,7 @@ city.prototype = {
         player.sprite.anchor.set(0.5);
         player.sprite.body.bounce.set(1);
         player.sprite.body.collideWorldBounds = true;
+        player.sprite.scale.setTo(0.2, 0.2);
         
         //Camera
         this.game.camera.follow(player.sprite);

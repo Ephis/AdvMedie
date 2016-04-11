@@ -1,6 +1,6 @@
 function Player(sprite) {
-    this.walkSpeed = 200;
-    this.runSpeed = 300;
+    this.walkSpeed = 300;
+    this.runSpeed = 400;
     this.sprite = sprite;
     this.lastTexture = "";
 
