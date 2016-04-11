@@ -23,6 +23,13 @@ preload.prototype = {
         this.load.audio('StartGameSound', 'assets/sounds/menu/start_game_sound.wav');
         this.load.audio('MouseOver', 'assets/sounds/menu/mouse_over_item.wav');
         
+            //Loading everything for the player
+        this.load.image('player-front', 'assets/player/front-view-char.png');
+        this.load.image('player-back', 'assets/player/back-view-char.png');
+        this.load.image('player-right', 'assets/player/right-view-char.png');
+        this.load.image('player-left', 'assets/player/left-view-char.png');
+        
+        
             //Loading everything for the city
         this.game.load.tilemap('Map', 'assets/map/map.json', null, Phaser.Tilemap.TILED_JSON);
         this.game.load.image('TilesetBG', 'assets/map/mapBg.png');
