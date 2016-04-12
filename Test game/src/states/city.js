@@ -2,6 +2,8 @@ var city = function(game) {
     this.game = game;
 }
 
+var hud;
+
 var map;
 var background;
 var road;
@@ -32,7 +34,7 @@ city.prototype = {
          //Load "waypoints"
         
         //Load player
-        playerSprite = this.game.add.sprite(50, 50, 'player-front');
+        playerSprite = this.game.add.sprite(50, 1700, 'player-front');
         player = new Player(playerSprite);
         
         //Load npcs
@@ -73,6 +75,9 @@ city.prototype = {
         cursors = this.game.input.keyboard.createCursorKeys();
         this.shift = this.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
         
+        //Setting up HUD
+        hud = new HUD(this.game);
+        hud.drawInTownHud();
     },
     //Gets called every time the canvas updates 60fps = 60 times a second
     update: function() {

@@ -36,6 +36,9 @@ preload.prototype = {
             //Loading everything for the dialogs
         
             //Loading everything for the fights
+        
+            //Loading everything for the HUD
+        this.game.load.image('HUDHeart', 'assets/HUD/Heart.png');
     
         //Check if any savedGames
     
