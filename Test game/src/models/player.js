@@ -3,6 +3,8 @@ function Player(sprite) {
     this.runSpeed = 400;
     this.sprite = sprite;
     this.lastTexture = "";
+    this.health = 80;
+    this.maxHealth = 100;
 
     this.moveRight = function (movementspeed) {
         player.sprite.body.velocity.x = movementspeed;
