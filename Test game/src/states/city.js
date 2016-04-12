@@ -63,7 +63,7 @@ city.prototype = {
         //Player physics debug
         player.sprite.body.debug = true;
         player.sprite.body.clearShapes();
-        player.sprite.body.addRectangle(60,60,0,0);
+        player.sprite.body.addRectangle(40,60,0,0);
         
         //Camera
         this.game.camera.follow(player.sprite);
