@@ -18,6 +18,7 @@ city.prototype = {
         //Load map
         map = this.game.add.tilemap('Map');
         map.addTilesetImage('RPGpack_sheet', 'Tileset');
+        map.addTilesetImage('Collision', 'TilesetCollision')
         background = map.createLayer('Grass');
         road = map.createLayer('Road');
         map.createLayer('Fence');
@@ -27,8 +28,7 @@ city.prototype = {
         map.createLayer('HouseDoor');
         map.createLayer('HouseWindow');
         map.createLayer('Bushes');
-        //foreground = map.createLayer('Foreground');
-        //background.resizeWorld();
+        background.resizeWorld();
          //Load "waypoints"
         
         //Load player
@@ -38,24 +38,38 @@ city.prototype = {
         //Load npcs
         
         //Physics
-        this.game.physics.startSystem(Phaser.Physics.ARCADE);
+        this.game.physics.startSystem(Phaser.Physics.P2JS);
         //Setting up witch tiles needs colliders
-        map.setCollision(42, true, "Collisions");
+        map.setCollision(261, true, 'Collisions');
+        this.game.physics.p2.convertTilemap(map, 'Collisions');
+        this.game.physics.p2.enable(player.sprite);
+        player.sprite.body.fixedRotation = true;
         //Physics engine create collision bodies from the tiles
         this.game.physics.enable(player.sprite);
+        this.game.physics.arcade.enable(map);
+        this.game.physics.setBoundsToWorld();
         
         //Setup the map
         this.game.world.setBounds(0, 0, 3200, 3200);
         
         //Setup the player
+<<<<<<< HEAD
         player.sprite.body.velocity.set(0,0);
         //Redundant?
+=======
+        //player.sprite.body.velocity.set(0,0);
+>>>>>>> 48a6a0816bee734148b4696341574c902561c907
         player.sprite.body.colliderWorldBounds = true;
         player.sprite.anchor.set(0.5);
-        player.sprite.body.bounce.set(1);
+        //player.sprite.body.bounce.set(1);
         player.sprite.body.collideWorldBounds = true;
         //Player size
         player.sprite.scale.setTo(0.2, 0.2);
+        
+        //Player physics debug
+        player.sprite.body.debug = true;
+        player.sprite.body.clearShapes();
+        player.sprite.body.addRectangle(60,60,0,0);
         
         //Camera
         this.game.camera.follow(player.sprite);

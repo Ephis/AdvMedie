@@ -32,6 +32,7 @@ preload.prototype = {
             //Loading everything for the city
         this.game.load.tilemap('Map', 'assets/map/map.json', null, Phaser.Tilemap.TILED_JSON);
         this.game.load.image('Tileset', 'assets/map/RPGpack_sheet.png');
+        this.game.load.image('TilesetCollision', 'assets/map/Collision.png');
             //Loading everything for the dialogs
         
             //Loading everything for the fights
