@@ -53,7 +53,7 @@ city.prototype = {
         this.game.world.setBounds(0, 0, 3200, 3200);
         
         //Setup the player
-        player.sprite.body.velocity.set(0,0);
+        //player.sprite.body.velocity.set(0,0);
         player.sprite.body.colliderWorldBounds = true;
         player.sprite.anchor.set(0.5);
         //player.sprite.body.bounce.set(1);
