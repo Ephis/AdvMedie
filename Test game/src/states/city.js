@@ -74,6 +74,10 @@ city.prototype = {
         //Controls
         cursors = this.game.input.keyboard.createCursorKeys();
         this.shift = this.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
+        this.upKey = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
+        this.downKey = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
+        this.rightKey = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
+        this.leftKey = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
         
         //Setting up HUD
         hud = new HUD(this.game);
@@ -87,17 +91,17 @@ city.prototype = {
         } else {
             movementspeed = player.walkSpeed;
         }
-        if(cursors.right.isDown) {
+        if(this.rightKey.isDown) {
             player.moveRight(movementspeed);
-        } else if(cursors.left.isDown) {
+        } else if(this.leftKey.isDown) {
             player.moveLeft(movementspeed);
         } else {
             player.sprite.body.velocity.x = 0;
         }
         
-        if(cursors.up.isDown) {
+        if(this.upKey.isDown) {
             player.moveUp(movementspeed);
-        } else if(cursors.down.isDown) {
+        } else if(this.downKey.isDown) {
             player.moveDown(movementspeed);
         } else {
             player.sprite.body.velocity.y = 0;
