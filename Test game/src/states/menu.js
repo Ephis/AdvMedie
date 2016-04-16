@@ -28,28 +28,17 @@ menu.prototype = {
         startBtn.anchor.set(0.5);
         continueBtn.anchor.set(0.5);
         quitBtn.anchor.set(0.5);
+        
+        startBtn.events.onInputOver.add(this.mouseOver, this);
+        startBtn.events.onInputOut.add(this.mouseOut, this);
+        continueBtn.events.onInputOver.add(this.mouseOver, this);
+        continueBtn.events.onInputOut.add(this.mouseOut, this);
+        quitBtn.events.onInputOver.add(this.mouseOver, this);
+        quitBtn.events.onInputOut.add(this.mouseOut, this);
 
     },
 
     update: function () {
-        if (startBtn.input.pointerOver()) {
-            this.mouseOverSound('start');
-            startBtn.scale.set(1.1, 1.1);
-        } else {
-            startBtn.scale.set(1, 1);
-        }
-        if (continueBtn.input.pointerOver()) {
-            this.mouseOverSound('continue');
-            continueBtn.scale.set(1.1, 1.1);
-        } else {
-            continueBtn.scale.set(1, 1);
-        }
-        if (quitBtn.input.pointerOver()) {
-            this.mouseOverSound('quit');
-            quitBtn.scale.set(1.1, 1.1);
-        } else {
-            quitBtn.scale.set(1,1);
-        }
     },
 
     //Starts a new game
@@ -72,10 +61,13 @@ menu.prototype = {
 
     },
 
-    mouseOverSound: function (button) {
-        if (button != lastButtonHovered) {
-            this.game.sound.play('MouseOver');
-            lastButtonHovered = button;
-        }
+    mouseOver: function (button) {
+        this.game.sound.play('MouseOver');
+        button.scale.set(1.1, 1.1);
+    },
+    
+    mouseOut: function (button) {
+        button.scale.set(1, 1);
     }
+    
 }
