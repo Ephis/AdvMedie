@@ -82,6 +82,7 @@ city.prototype = {
         //Setting up HUD
         hud = new HUD(this.game);
         hud.drawInTownHud();
+        hud.updateHpBar(player);
     },
     //Gets called every time the canvas updates 60fps = 60 times a second
     update: function() {
