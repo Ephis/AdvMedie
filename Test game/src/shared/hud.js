@@ -21,8 +21,8 @@ function HUD(game){
     
     self.updateHpBar = function(player){
         var displayHealth;
-        displayHealth = (player.health / player.maxHealth) * 1,28;
-        displayHealth = displayHealth * 100;
+        displayHealth = (player.health / player.maxHealth) * 100;
+        displayHealth = displayHealth * 1.28;
         healthBar.context.clearRect(0, 0, healthBar.width, healthBar.height);
         healthBar.context.fillRect(0, 0, displayHealth, 24);
         healthBar.dirty = true;

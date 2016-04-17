@@ -56,7 +56,6 @@ city.prototype = {
         
         //Setup the player
         //player.sprite.body.velocity.set(0,0);
-        player.sprite.body.colliderWorldBounds = true;
         player.sprite.anchor.set(0.5);
         //player.sprite.body.bounce.set(1);
         player.sprite.body.collideWorldBounds = true;
