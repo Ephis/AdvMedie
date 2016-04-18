@@ -63,7 +63,7 @@ city.prototype = {
         player.sprite.scale.setTo(0.2, 0.2);
         
         //Player physics debug
-        player.sprite.body.debug = true;
+        //player.sprite.body.debug = true;
         player.sprite.body.clearShapes();
         player.sprite.body.addRectangle(40,60,0,0);
         
@@ -82,6 +82,9 @@ city.prototype = {
         hud = new HUD(this.game);
         hud.drawInTownHud();
         hud.updateHpBar(player);
+        
+        //RobertTest
+        var test = RobertTest(this.game);
     },
     //Gets called every time the canvas updates 60fps = 60 times a second
     update: function() {

@@ -42,6 +42,13 @@ preload.prototype = {
     
         //Check if any savedGames
     
+        
+        //Load test subjects for Robert
+        this.game.load.image('Bush1', 'assets/RobertTest/bush1.png');
+        this.game.load.image('Bush2', 'assets/RobertTest/bush2.png');
+        this.game.load.image('Mushroom', 'assets/RobertTest/mushroom.png');
+        this.game.load.image('OakTree', 'assets/RobertTest/oakTree.png');
+        this.game.load.image('PineTree', 'assets/RobertTest/pineTree.png');
     
     },
     create: function() {
