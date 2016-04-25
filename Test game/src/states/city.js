@@ -104,6 +104,10 @@ city.prototype = {
         this.downKey = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
         this.rightKey = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
         this.leftKey = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
+        this.fightStateKey = this.game.input.keyboard.addKey(Phaser.KeyCode.FIVE);
+        
+        //Setting up callbacks on keyDown
+        this.fightStateKey.onDown.add(this.startFightState, this);
         
         //Setting up HUD
         hud = new HUD(this.game);
@@ -153,5 +157,9 @@ city.prototype = {
     //When player wants to open a dialog with an npc
     enterDialog: function() {
         
+    },
+    
+    startFightState: function(){
+        this.state.start('Fight');
     }
 }
