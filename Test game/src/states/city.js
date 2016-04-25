@@ -9,6 +9,10 @@ var background;
 var road;
 var player;
 
+var playerDoor;
+var playerSprite;
+var playerDoor;
+
 var movementspeed;
 
 var cursors;
@@ -33,14 +37,32 @@ city.prototype = {
         background.resizeWorld();
          //Load "waypoints"
         
-        //Load player
+    
+         //Load player
         playerSprite = this.game.add.sprite(50, 1700, 'player-front');
         player = new Player(playerSprite);
+        
+        
+        //Enter door
+        enterDoor = this.game.add.sprite(332, 830, 'player-back');
+        playerDoor = new Player(enterDoor);
+        
+        
+        
+        //game.physics.enable([sprite1,sprite2], Phaser.Physics.ARCADE);
+        
+        
+        playerDoor.sprite.scale.setTo(0.2, 0.2); 
+        //Makes player invisible
+        //enterDoor.visible = false;
+        
         
         //Load npcs
         
         //Physics
+         
         this.game.physics.startSystem(Phaser.Physics.P2JS);
+        this.game.physics.startSystem(Phaser.Physics.ARCADE);
         //Setting up witch tiles needs colliders
         map.setCollision(261, true, 'Collisions');
         this.game.physics.p2.convertTilemap(map, 'Collisions');
@@ -50,7 +72,12 @@ city.prototype = {
         this.game.physics.enable(player.sprite);
         this.game.physics.arcade.enable(map);
         this.game.physics.setBoundsToWorld();
+        //Marck new
+        this.game.physics.enable(player, Phaser.Physics.ARCADE);
+        this.game.physics.enable(playerDoor, Phaser.Physics.ARCADE);
         
+        
+         
         //Setup the map
         this.game.world.setBounds(0, 0, 3200, 3200);
         
@@ -88,6 +115,9 @@ city.prototype = {
     },
     //Gets called every time the canvas updates 60fps = 60 times a second
     update: function() {
+        
+        this.game.physics.arcade.overlap(player, playerDoor, this.enterHouse, null, this);
+        
         //Controll movement an player inputs
         if(this.shift.isDown){
             movementspeed = player.runSpeed;
@@ -109,10 +139,12 @@ city.prototype = {
         } else {
             player.sprite.body.velocity.y = 0;
         }
+        
+    
     },
     //When the player wants to enter an house
     enterHouse: function() {
-        
+      this.state.start('Menu');  
     },
     //When the player whats to fight an npc
     enterFight: function() {

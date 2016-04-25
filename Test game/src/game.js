@@ -2,6 +2,7 @@ var main = main || {};
 
 main.game = new Phaser.Game(800, 600, Phaser.AUTO,'');
 
+//Måske ændre til 'preload', preloadState osv.?
 main.game.state.add('Preload', preload);
 main.game.state.add('Menu', menu);
 main.game.state.add('City', city);
