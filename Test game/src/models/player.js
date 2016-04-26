@@ -3,7 +3,7 @@ function Player(sprite) {
     this.runSpeed = 400;
     this.sprite = sprite;
     this.lastTexture = "";
-    this.health = 80;
+    this.health = 100;
     this.maxHealth = 100;
 
     this.moveRight = function (movementspeed) {
@@ -33,5 +33,25 @@ function Player(sprite) {
             this.sprite.loadTexture('player-back');
         }
     };
+    
+    this.fightMoveRight = function () {
+        player.sprite.body.velocity.x = 300;
+        if(this.lastTexture != 'player-fight-right'){
+            this.sprite.loadTexture('player-fight-right');   
+        }
+    };
+    
+    this.fightMoveLeft = function () {
+        player.sprite.body.velocity.x = -300;
+        if(this.lastTexture != 'player-fight-left'){
+            this.sprite.loadTexture('player-fight-left');   
+        }
+    };
+    
+    this.fightJump = function () {
+        player.sprite.body.y = player.sprite.body.y - 50;
+    };
+    
+    
 
 };

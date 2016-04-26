@@ -16,7 +16,13 @@ function HUD(game){
     };
     
     self.drawInFightHud = function(){
-        
+        hudGroup = self.game.add.group();
+        var heartIcon = self.game.add.sprite(10,10, 'HUDHeart');
+        heartIcon.fixedToCamera = true;
+        heartIcon.scale.setTo(0.3, 0.3);
+        hudGroup.add(heartIcon);
+        hud.fixedToCamera = true;
+        self.drawHeathBar(60, 18);
     };
     
     self.updateHpBar = function(player){

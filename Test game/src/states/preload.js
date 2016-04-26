@@ -36,6 +36,9 @@ preload.prototype = {
             //Loading everything for the dialogs
         
             //Loading everything for the fights
+                //Player
+        this.load.image('player-fight-right', 'assets/player/right-fight-view-char.png');
+        this.load.image('player-fight-left', 'assets/player/left-fight-view-char.png');
         
             //Loading everything for the HUD
         this.game.load.image('HUDHeart', 'assets/HUD/Heart.png');
