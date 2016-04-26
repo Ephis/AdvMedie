@@ -11,7 +11,7 @@ var player;
 
 var playerDoor;
 var playerSprite;
-var playerDoor;
+
 
 var movementspeed;
 
@@ -43,7 +43,8 @@ city.prototype = {
         player = new Player(playerSprite);
         
         
-        //Enter door
+        //1
+        //Enter door 
         enterDoor = this.game.add.sprite(332, 830, 'player-back');
         playerDoor = new Player(enterDoor);
         
@@ -51,7 +52,7 @@ city.prototype = {
         
         //game.physics.enable([sprite1,sprite2], Phaser.Physics.ARCADE);
         
-        
+        //2
         playerDoor.sprite.scale.setTo(0.2, 0.2); 
         //Makes player invisible
         //enterDoor.visible = false;
@@ -69,10 +70,10 @@ city.prototype = {
         this.game.physics.p2.enable(player.sprite);
         player.sprite.body.fixedRotation = true;
         //Physics engine create collision bodies from the tiles
-        this.game.physics.enable(player.sprite);
+            this.game.physics.enable(player.sprite);
         this.game.physics.arcade.enable(map);
         this.game.physics.setBoundsToWorld();
-        //Marck new
+        //Marck new  3
         this.game.physics.enable(player, Phaser.Physics.ARCADE);
         this.game.physics.enable(playerDoor, Phaser.Physics.ARCADE);
         
@@ -115,7 +116,7 @@ city.prototype = {
     },
     //Gets called every time the canvas updates 60fps = 60 times a second
     update: function() {
-        
+        //4 trying to overlap
         this.game.physics.arcade.overlap(player, playerDoor, this.enterHouse, null, this);
         
         //Controll movement an player inputs
@@ -142,6 +143,7 @@ city.prototype = {
         
     
     },
+    //5
     //When the player wants to enter an house
     enterHouse: function() {
       this.state.start('Menu');  
