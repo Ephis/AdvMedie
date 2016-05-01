@@ -8,8 +8,8 @@ var map;
 var background;
 var road;
 var player;
+var door;
 
-var playerDoor;
 var playerSprite;
 
 
@@ -38,24 +38,16 @@ city.prototype = {
          //Load "waypoints"
         
     
-         //Load player
-        playerSprite = this.game.add.sprite(50, 1700, 'player-front');
+         //Load player                          //1700
+        playerSprite = this.game.add.sprite(50, 900, 'player-front');
         player = new Player(playerSprite);
         
         
         //1
         //Enter door 
-        enterDoor = this.game.add.sprite(332, 830, 'player-back');
-        playerDoor = new Player(enterDoor);
+        door = this.game.add.sprite(350, 865, 'player-back');
         
         
-        
-        //game.physics.enable([sprite1,sprite2], Phaser.Physics.ARCADE);
-        
-        //2
-        playerDoor.sprite.scale.setTo(0.2, 0.2); 
-        //Makes player invisible
-        //enterDoor.visible = false;
         
         
         //Load npcs
@@ -63,20 +55,37 @@ city.prototype = {
         //Physics
          
         this.game.physics.startSystem(Phaser.Physics.P2JS);
-        this.game.physics.startSystem(Phaser.Physics.ARCADE);
         //Setting up witch tiles needs colliders
         map.setCollision(261, true, 'Collisions');
         this.game.physics.p2.convertTilemap(map, 'Collisions');
-        this.game.physics.p2.enable(player.sprite);
+        this.game.physics.p2.enable([player.sprite, door], false);
         player.sprite.body.fixedRotation = true;
+         
         //Physics engine create collision bodies from the tiles
-            this.game.physics.enable(player.sprite);
+            //this.game.physics.enable(player.sprite);
         this.game.physics.arcade.enable(map);
         this.game.physics.setBoundsToWorld();
-        //Marck new  3
-        this.game.physics.enable(player, Phaser.Physics.ARCADE);
-        this.game.physics.enable(playerDoor, Phaser.Physics.ARCADE);
+        //
+        this.game.physics.p2.setImpactEvents(true);
+       
+       
+        //
+        var playerCollisionGroup = this.game.physics.p2.createCollisionGroup();
+        var doorCollisionGroup = this.game.physics.p2.createCollisionGroup();
         
+        
+        
+        door.enableBody = true;
+        door.physicsBodyType = Phaser.Physics.P2JS;
+        
+        //
+        door.body.setCollisionGroup(doorCollisionGroup);
+        
+        //
+        player.sprite.body.setCollisionGroup(playerCollisionGroup);
+    
+        //
+        player.sprite.body.collides(doorCollisionGroup, this.hitDoor, this);
         
          
         //Setup the map
@@ -87,13 +96,24 @@ city.prototype = {
         player.sprite.anchor.set(0.5);
         //player.sprite.body.bounce.set(1);
         player.sprite.body.collideWorldBounds = true;
+        door.body.collideWorldBounds = true;
+        door.scale.setTo(0.2, 0.2);
         //Player size
         player.sprite.scale.setTo(0.2, 0.2);
+        
+         //2
+       
+        //Makes player invisible
+        //enterDoor.visible = false;
+        
         
         //Player physics debug
         //player.sprite.body.debug = true;
         player.sprite.body.clearShapes();
         player.sprite.body.addRectangle(40,60,0,0);
+        
+        door.body.clearShapes();
+        door.body.addRectangle(40,60,0,0);
         
         //Camera
         this.game.camera.follow(player.sprite);
@@ -120,8 +140,7 @@ city.prototype = {
     },
     //Gets called every time the canvas updates 60fps = 60 times a second
     update: function() {
-        //4 trying to overlap
-        this.game.physics.arcade.overlap(player, playerDoor, this.enterHouse, null, this);
+       
         
         //Controll movement an player inputs
         if(this.shift.isDown){
@@ -147,10 +166,17 @@ city.prototype = {
         
     
     },
+    
+
+    hitDoor: function(body1, body2){
+        console.log("Hertil");
+    },
+    
     //5
     //When the player wants to enter an house
     enterHouse: function() {
       this.state.start('Menu');  
+        console.log("Hertil");
     },
     //When the player whats to fight an npc
     enterFight: function() {

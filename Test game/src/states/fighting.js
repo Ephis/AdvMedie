@@ -31,7 +31,7 @@ fighting.prototype = {
         player.sprite.scale.setTo(0.04, 0.04);
         
         //Player physics debug
-        player.sprite.body.debug = true;
+       // player.sprite.body.debug = true;
         player.sprite.body.clearShapes();
         player.sprite.body.addRectangle(40,205,-5,6);
         
