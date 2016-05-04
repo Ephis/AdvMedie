@@ -12,7 +12,8 @@ var player;
 
 var playerSprite;
 
-
+var lastMovement;
+var timeForIdle = 300;
 var movementspeed;
 
 var cursors;
@@ -164,19 +165,28 @@ city.prototype = {
         }
         if(this.rightKey.isDown) {
             player.moveRight(movementspeed);
+            lastMovement = this.game.time.now;
         } else if(this.leftKey.isDown) {
             player.moveLeft(movementspeed);
+            lastMovement = this.game.time.now;
         } else {
             player.sprite.body.velocity.x = 0;
         }
         
         if(this.upKey.isDown) {
             player.moveUp(movementspeed);
+            lastMovement = this.game.time.now;
         } else if(this.downKey.isDown) {
             player.moveDown(movementspeed);
+            lastMovement = this.game.time.now;
         } else {
             player.sprite.body.velocity.y = 0;
         }
+        
+        if(this.game.time.now == lastMovement + timeForIdle)
+            {
+                console.log("Should idle"); 
+            }
         
     
     },
