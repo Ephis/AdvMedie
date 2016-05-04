@@ -1,0 +1,15 @@
+skeleton-animation0 = 0 0 497 308
+skeleton-animation1 = 498 0 497 308
+skeleton-animation10 = 0 309 497 308
+skeleton-animation2 = 0 618 497 308
+skeleton-animation3 = 498 309 497 308
+skeleton-animation4 = 498 618 497 308
+skeleton-animation5 = 996 0 497 308
+skeleton-animation6 = 996 309 497 308
+skeleton-animation7 = 1494 0 497 308
+skeleton-animation8 = 996 618 497 308
+skeleton-animation9 = 1494 309 497 308
+back-view-char = 1692 618 186 317
+front-view-char = 1494 618 197 321
+left-view-char = 1879 618 140 325
+right-view-char = 0 927 138 324

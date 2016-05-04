@@ -28,6 +28,7 @@ preload.prototype = {
         this.load.image('player-back', 'assets/player/back-view-char.png');
         this.load.image('player-right', 'assets/player/right-view-char.png');
         this.load.image('player-left', 'assets/player/left-view-char.png');
+        this.game.load.spritesheet('player-spritesheet', 'assets/player/player-spritesheet.png', 497, 308);
         
             //Loading everything for the city
         this.game.load.tilemap('Map', 'assets/map/map.json', null, Phaser.Tilemap.TILED_JSON);

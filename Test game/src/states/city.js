@@ -114,7 +114,7 @@ city.prototype = {
         //door.body.collideWorldBounds = true;
         //door.scale.setTo(0.2, 0.2);
         //Player size
-        player.sprite.scale.setTo(0.2, 0.2);
+        player.sprite.scale.setTo(0.4, 0.4);
         
          //2
        
@@ -183,9 +183,10 @@ city.prototype = {
             player.sprite.body.velocity.y = 0;
         }
         
-        if(this.game.time.now == lastMovement + timeForIdle)
+        if(this.game.time.now <= lastMovement + timeForIdle)
             {
                 console.log("Should idle"); 
+                player.idle();
             }
         
     
