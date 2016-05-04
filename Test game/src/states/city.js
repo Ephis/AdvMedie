@@ -8,7 +8,7 @@ var map;
 var background;
 var road;
 var player;
-var door;
+//var door;
 
 var playerSprite;
 
@@ -45,9 +45,10 @@ city.prototype = {
         
         //1
         //Enter door 
-        door = this.game.add.sprite(350, 865, 'player-back');
+       // door = this.game.add.sprite(350, 865, 'player-back');
         
-        
+        //door.enableBody = true;
+        //door.physicsBodyType = Phaser.Physics.P2JS;
         
         
         //Load npcs
@@ -58,7 +59,7 @@ city.prototype = {
         //Setting up witch tiles needs colliders
         map.setCollision(261, true, 'Collisions');
         this.game.physics.p2.convertTilemap(map, 'Collisions');
-        this.game.physics.p2.enable([player.sprite, door], false);
+        this.game.physics.p2.enable([player.sprite], false);
         player.sprite.body.fixedRotation = true;
          
         //Physics engine create collision bodies from the tiles
@@ -67,6 +68,7 @@ city.prototype = {
         this.game.physics.setBoundsToWorld();
         //
         this.game.physics.p2.setImpactEvents(true);
+        
        
        
         //
@@ -74,18 +76,30 @@ city.prototype = {
         var doorCollisionGroup = this.game.physics.p2.createCollisionGroup();
         
         
+        this.game.physics.p2.updateBoundsCollisionGroup();
         
+        /*var door = this.game.add.group();
         door.enableBody = true;
         door.physicsBodyType = Phaser.Physics.P2JS;
+        */
+        
+        //door.enableBody = true;
+       // door.physicsBodyType = Phaser.Physics.P2JS;
         
         //
-        door.body.setCollisionGroup(doorCollisionGroup);
+        //door.body.setCollisionGroup(doorCollisionGroup);
+        
+        //door.body.collides(playerCollisionGroup);
         
         //
         player.sprite.body.setCollisionGroup(playerCollisionGroup);
     
         //
-        player.sprite.body.collides(doorCollisionGroup, this.hitDoor, this);
+       // player.sprite.body.collides(doorCollisionGroup, this.hitDoor, this);
+        
+        
+        
+        
         
          
         //Setup the map
@@ -96,8 +110,8 @@ city.prototype = {
         player.sprite.anchor.set(0.5);
         //player.sprite.body.bounce.set(1);
         player.sprite.body.collideWorldBounds = true;
-        door.body.collideWorldBounds = true;
-        door.scale.setTo(0.2, 0.2);
+        //door.body.collideWorldBounds = true;
+        //door.scale.setTo(0.2, 0.2);
         //Player size
         player.sprite.scale.setTo(0.2, 0.2);
         
@@ -112,8 +126,8 @@ city.prototype = {
         player.sprite.body.clearShapes();
         player.sprite.body.addRectangle(40,60,0,0);
         
-        door.body.clearShapes();
-        door.body.addRectangle(40,60,0,0);
+       // door.body.clearShapes();
+        //door.body.addRectangle(40,60,0,0);
         
         //Camera
         this.game.camera.follow(player.sprite);
