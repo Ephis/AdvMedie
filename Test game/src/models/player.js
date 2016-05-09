@@ -14,7 +14,7 @@ function Player(sprite) {
     
     this.sprite.loadTexture('player-spritesheet');
     
-    this.sprite.animations.add(this.idleAnimaiton, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+    this.sprite.animations.add(this.idleAnimaiton, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
     this.sprite.animations.add(this.walkRightAnimation, [14]);
     this.sprite.animations.add(this.walkLeftAnimation, [13]);
     this.sprite.animations.add(this.walkDownAnimation, [11]);
@@ -51,7 +51,7 @@ function Player(sprite) {
     this.idle = function(){
         if(this.sprite.animations.name != this.idleAnimaiton){
             this.sprite.frame = 0;
-            this.sprite.animations.play(this.idleAnimaiton, 4, true);
+            this.sprite.animations.play(this.idleAnimaiton, 8, true);
             console.log("idle animation should play"); 
         }
     }

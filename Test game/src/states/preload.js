@@ -28,7 +28,7 @@ preload.prototype = {
         this.load.image('player-back', 'assets/player/back-view-char.png');
         this.load.image('player-right', 'assets/player/right-view-char.png');
         this.load.image('player-left', 'assets/player/left-view-char.png');
-        this.game.load.spritesheet('player-spritesheet', 'assets/player/player-spritesheet.png', 497, 308);
+        this.game.load.spritesheet('player-spritesheet', 'assets/player/player-spritesheet.png', 450, 350);
         
             //Loading everything for the city
         this.game.load.tilemap('Map', 'assets/map/map.json', null, Phaser.Tilemap.TILED_JSON);
@@ -40,6 +40,7 @@ preload.prototype = {
                 //Player
         this.load.image('player-fight-right', 'assets/player/right-fight-view-char.png');
         this.load.image('player-fight-left', 'assets/player/left-fight-view-char.png');
+        this.load.image('fight-background-1', 'assets/fighting/arena-1.png');
         
             //Loading everything for the HUD
         this.game.load.image('HUDHeart', 'assets/HUD/Heart.png');

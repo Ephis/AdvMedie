@@ -11,6 +11,10 @@ fighting.prototype = {
     },
     //Sets up the game stage
     create: function() {
+        
+        //Setup background image
+        var background = this.game.add.tileSprite(0, 0, 1080, 720, 'fight-background-1');
+        
           //Load player
         playerSprite = this.game.add.sprite(50, 493, 'player-fight-right');
         player = new Player(playerSprite);

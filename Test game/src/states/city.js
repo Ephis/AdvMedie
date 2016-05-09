@@ -114,7 +114,7 @@ city.prototype = {
         //door.body.collideWorldBounds = true;
         //door.scale.setTo(0.2, 0.2);
         //Player size
-        player.sprite.scale.setTo(0.4, 0.4);
+        player.sprite.scale.setTo(0.6, 0.6);
         
          //2
        
